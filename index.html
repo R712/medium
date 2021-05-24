@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>Medium Bridge</title>
+    <meta name="description" content="Medium Bridge">
+    <meta name="author" content="Medium">
+    <link rel="stylesheet" href="asset/style.css">
+</head>
+
+<body>
+
+<div class="bridge-wrap">
+    
+    <header class="navbar wow fadeInDown">
+        <section class="navbar-section">
+            <a class="navbar-brand" href="#" onclick="javascript:void(0);"><span>Medium Bridge</span></a>
+            <a class="btn btn-link is-current" href="#" onclick="javascript:void(0);">Bridge</a>
+            <a class="btn btn-link" href="#" onclick="javascript:void(0);">Explorer</a>
+            <a class="btn btn-link" href="#" onclick="javascript:void(0);">Docs</a>
+        </section>
+        <section class="navbar-section">
+            <button class="btn btn-primary btn-lg">지갑 연결</button>
+        </section>
+    </header>
+
+    <div class="container">
+
+        <div class="introduce wow fadeInUp fast" data-wow-delay="0.5s">
+            <div>
+                <span>서로 다른 블록체인간 &amp; 상호운용성을 증대하기 위한 크로스체인 연결,</span>
+                <span>브릿지 서비스를 미디움이 시작합니다.</span>
+            </div>
+        </div>
+    
+        <div class="columns">
+
+            <div class="tutorial column col-3 wow fadeInLeft" data-wow-delay="0.5s">
+                <div>
+                    <em>1</em>
+                    <span>전환 할 코인을 선택하세요</span>
+                </div>
+                <div>
+                    <em>2</em>
+                    <span>보내고 받을 체인을 선택하고 지갑을 연결하세요</span>
+                </div>
+                <div>
+                    <em>3</em>
+                    <span>교환할 수량과 받을 지갑주소를 입력하세요</span>
+                </div>
+            </div>
+
+            <main class="form-exchange column col-9 wow fadeInRight" data-wow-delay="0.5s">
+                <form action="#">
+                    <div class="columns col-gapless">
+                        <div class="form-label column col-2">
+                            <em>Asset</em>
+                            <span>코인자산</span>
+                        </div>
+                        <div class="column col-10">
+                            <button id="btn-choose-coin" class="btn btn-block btn-lg">코인을 선택하세요 <i class="icon icon-caret"></i></button>
+                        </div>
+                    </div>
+                    <div class="columns col-gapless">
+                        <div class="form-label column col-2">
+                            <em>From</em>
+                            <span>전환체인</span>
+                        </div>
+                        <div class="column">
+                            <div class="dropdown dropdown-right">
+                                <button href="#" class="btn btn-lg btn-block dropdown-toggle" tabindex="0">
+                                체인을 선택하세요 <i class="icon icon-caret"></i>
+                                </button>
+                                <ul class="menu">
+                                    <li class="menu-item">
+                                        <a href="#">이더리움</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#">클레이튼%</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#">MDL</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#">MDL_eth</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column col-auto"><span class="i-exchange">⇢</span></div>
+                        <div class="form-label column col-2">
+                            <em>To</em>
+                            <span>전환체인</span>
+                        </div>
+                        <div class="column">
+                            <div class="dropdown dropdown-right">
+                                <button href="#" class="btn btn-lg btn-block dropdown-toggle" tabindex="0">
+                                체인을 선택하세요 <i class="icon icon-caret"></i>
+                                </button>
+                                <ul class="menu">
+                                    <li class="menu-item">
+                                        <a href="#">이더리움</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#">클레이튼%</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#">MDL</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#">MDL_eth</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns col-gapless">
+                        <div class="form-label column col-2">
+                            <em>Amount</em>
+                            <span>전환수량</span>
+                        </div>
+                        <div class="column col-10">
+                            <div class="input-group">
+                                <input class="form-input input-lg" type="text" value="0" placeholder="Amount" readonly/>
+                                <div class="dropdown dropdown-right">
+                                    <button href="#" class="btn btn-lg tn-primary dropdown-toggle" tabindex="0">
+                                    MAX <i class="icon icon-caret"></i>
+                                    </button>
+                                    <ul class="menu">
+                                        <li class="menu-item">
+                                            <a href="#">MAX</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">50%</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">25%</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">10%</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li class="menu-item">
+                                            <a href="#">직접입력</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns col-gapless">
+                        <div class="form-label column col-2">
+                            <em>Destination</em>
+                            <span>수령지갑주소</span>
+                        </div>
+                        <div class="column col-10">
+                            <div class="input-group">
+                                <input class="form-input input-lg" type="text" placeholder="수령받을 지갑의 주소를 입력하세요.">
+                                <button class="btn btn-primary input-group-btn btn-lg">
+                                    <i class="icon icon-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns col-gapless">
+                        <div class="form-label column col-2">
+                            <em>Destination</em>
+                            <span>수령지갑태그</span>
+                        </div>
+                        <div class="column col-10">
+                            <div class="input-group">
+                                <input class="form-input input-lg" type="text" placeholder="지갑, 거래소에서 필요로 하는 경우 꼭 입력해주세요.">
+                                <button class="btn btn-primary input-group-btn btn-lg">
+                                    <i class="icon icon-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="caution">
+                        <li>주소 오입력 시 코인 전환이 정상적으로 이뤄지지 않아 자산을 잃을 수 있습니다.</li>
+                        <li>메타마스크 지갑 사용 시 컨트랙트 승인(최초 1회) 후에 코인 전환을 진행할 수 있습니다.</li>
+                        <li>Tax, Bridge fee 를 잘 확인하시고 진행 해주세요.</li>
+                    </ul>
+                    <button class="btn-exchange btn btn-lg btn-primary btn-block">전환하기</button>
+                </form>
+            </main>
+
+        </div>
+
+    </div>
+
+    <div class="modal modal-sm" id="modal-choose-coin">
+        <a href="#close" class="modal-overlay" aria-label="Close"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <button class="btn btn-clear float-right" aria-label="Close"></button>
+                <div class="modal-title">코인 선택</div>
+                <p>전환할 코인을 선택하세요.</p>
+                <div class="has-icon-left">
+                    <input type="text" class="form-input input-lg" placeholder="코인명으로 검색하세요.">
+                    <i class="form-icon icon icon-search"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="cards columns col-gapless">
+                    <div class="card column col-3">
+                        <img src="dummy/klay.webp" class="i-blockchain" alt="Klay" />
+                        <strong>Klay</strong>
+                    </div>
+                    <div class="card column col-3">
+                        <img src="dummy/mdm.webp" class="i-blockchain" alt="MDM" />
+                        <strong>MDM</strong>
+                    </div>
+                    <div class="card column col-3">
+                        <img src="dummy/mrt.jpeg" class="i-blockchain" alt="Klay" />
+                        <strong>MRT</strong>
+                    </div>
+                    <div class="card column col-3">
+                        <img src="dummy/kok.webp" class="i-blockchain" alt="Klay" />
+                        <strong>KOK</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-block btn-primary btn-lg">선택</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="wow fadeInUp">Copyright 2021 &copy; <strong>MEDIUM.</strong> All rights reserved.</footer>
+
+</div>
+
+<script src="js/bridge.js"></script>
+<script src="js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+</body>
+</html>
