@@ -32,22 +32,27 @@ br{font-family:dotum}
 fieldset {display:block;min-width:0;}
 html,body {min-width:1280px;}
 
-a {text-decoration:none; color:inherit; cursor:pointer;}
+a {text-decoration:none; color:inherit;}
 a:link, a:visited {text-decoration:none; color:inherit;}
+a, input, button, textarea, select {cursor:pointer;}
 a:hover, a:focus, a:active {text-decoration:none;}
 
 *::selection {color:#fff; background:#003893;}
 *::-moz-selection {color:#fff; background:#003893;}
 
 ::-webkit-input-placeholder {
-    color: #cabaf2;
+    color: #9CA1AB;
+    font-weight: 400;
 }
 ::-moz-placeholder {
-    color: #cabaf2;
+    color: #9CA1AB;
+    font-weight: 400;
 }
 ::-ms-placeholder {
-    color: #cabaf2;
+    color: #9CA1AB;
+    font-weight: 400;
 }
 ::placeholder {
-    color: #cabaf2;
+    color: #9CA1AB;
+    font-weight: 400;
 }

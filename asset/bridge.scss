@@ -8,6 +8,8 @@ $txtcolor: #222;
 $txtsubcolor: #888;
 $white: #FFF;
 $black: #000;
+$border: #DADADA;
+$bg: #F6FBFF;
 
 $container: 980px;
 
@@ -30,21 +32,34 @@ $container: 980px;
 
 
 body {
-    background: url('../bg0.jpg') no-repeat fixed center;
+    min-height: 980px;
+    background: url('../img/bg0.jpg') no-repeat fixed center;
     background-size: cover;
     scroll-behavior: smooth;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     -webkit-appearance: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    &.bg0 {
+        background-image: url('../img/bg0.jpg');
+    }
+    &.bg1 {
+        background-image: url('../img/bg1.jpg');
+    }
+    &.bg2 {
+        background-image: url('../img/bg2.jpg');
+    }
+    &.bg3 {
+        background-image: url('../img/bg3.jpg');
+    }
 }
 
 :hover,
 :hover *,
 :hover::after,
 :hover::before {
-    transition: all .2s ease-in-out;
+    transition: all .15s ease-in-out;
 }
 
 .bridge-wrap {
@@ -88,59 +103,62 @@ body {
     padding: 20px 28px;
     width: 100%;
     letter-spacing: 0.5px;
-    .navbar-brand {
-        margin-right: .8rem;
-        &::before {
-            content: '';
-            display: block;
-            width: 176px;
-            height: 24px;
-            background: url('../logo.svg') no-repeat center;
-            background-size: 176px;
-        }
-        span {
-            display: none;
-        }
-    }
-    a, .btn-link {
-        border: 0;
-        color: $white;
-        &:hover {
-            background: none;
-            color: lighten($subcolor1, 20%);
-        }
-    }
-    .btn-link {
-        position: relative;
-        margin: 0 20px;
-        padding: 7px 0;
-        font-weight: 600;
-        &::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0;
-            height: 2px;
-            background: lighten($subcolor1, 20%);
-        }
-        &:hover {
-            &::after {
-                width: 100%;
+    .navbar-section:first-child {
+        .navbar-brand {
+            margin-right: 28px;
+            &::before {
+                content: '';
+                display: block;
+                width: 176px;
+                height: 24px;
+                background: url('../img/logo.svg') no-repeat center;
+                background-size: 176px;
+            }
+            span {
+                display: none;
             }
         }
-    }
-    .is-current,
-    .is-current:hover {
-        color: $white;
-        &::after {
-            width: 100%;
-            background: $white;
+        a, .btn-link {
+            border: 0;
+            color: $white;
+            &:hover {
+                background: none;
+                color: lighten($subcolor1, 20%);
+            }
+        }
+        .btn-link {
+            position: relative;
+            margin: 0 18px;
+            padding: 7px 0;
+            font-weight: 600;
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -5px;
+                width: 0;
+                height: 2px;
+                background: lighten($subcolor1, 20%);
+            }
+            &:hover {
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+        .is-current,
+        .is-current:hover {
+            color: $white;
+            &::after {
+                width: 100%;
+                background: $white;
+            }
         }
     }
     .btn.btn-primary {
         position: relative;
-        background: $white url('../i-connect.svg') no-repeat 16px center;
+        border-color: $white;
+        background: $white url('../img/i-connect.svg') no-repeat 16px center;
         padding-right: 20px;
         width: 180px;
         height: 54px;
@@ -155,6 +173,26 @@ body {
             background-color: lighten($subcolor1, 45%);
         }
     }
+    .dropdown-toggle {
+        border-color: $white;
+        background: $white url('../img/i-lock.svg') no-repeat 16px center;
+        padding: 0 12px 0 42px;
+        height: 54px;
+        color: darken($subcolor1, 20%);
+        font-weight: 500;
+        font-size: 16px;
+        text-align: right;
+        border-radius: 4px;
+        box-shadow: 0 1px 16px darken($subcolor1, 10%);
+        strong {
+            padding-right: 8px;
+        }
+        &:hover,
+        &:focus {
+            border-color: $white !important;
+            background-color: lighten($subcolor1, 45%);
+        }
+    }
 }
 
 .introduce {
@@ -165,7 +203,6 @@ body {
     font-weight: 500;
     font-size: 22px;
     line-height: 1.54;
-    text-align: right;
     span {
         display: block;
         &:last-child {
@@ -175,68 +212,104 @@ body {
     }
 }
 
-.tutorial {
-    div {
+.aside {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    .tutorial {
         position: relative;
+        div {
+            position: relative;
+            margin-right: 16px;
+            padding: 24px;
+            background: rgba($black, .4);
+            color: rgba($white, .75);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            & + div {
+                margin-top: 40px;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: -30px;
+                    left: 50%;
+                    margin-left: -40%;
+                    width: 80%;
+                    height: 20px;
+                    border: 1px dashed rgba($white, .5);
+                    border-width: 0 1px;
+                }
+            }
+            em {
+                position: absolute;
+                top: 50%;
+                left: -14px;
+                margin-top: -14px;
+                width: 28px;
+                height: 28px;
+                background: $maincolor;
+                color: $white;
+                font-weight: 700;
+                font-size: 14px;
+                line-height: 28px;
+                text-align: center;
+                border-radius: 15px;
+            }
+            span {
+                display: block;
+                font-size: 15px;
+                line-height: 1.54;
+                word-break: keep-all;
+            }
+            &:first-child,
+            &.current-step {
+                color: $white;
+                font-weight: 600;
+                em {
+                    background: $subcolor1;
+                    animation: effectPoing 1s infinite;
+                }
+            }
+        }
+    }
+    .theme {
         margin-right: 16px;
-        padding: 24px;
+        padding: 20px 20px 16px;
         background: rgba($black, .4);
         color: rgba($white, .75);
         backdrop-filter: blur(10px);
         border-radius: 8px;
-        & + div {
-            margin-top: 40px;
-            &::before {
-                content: '';
-                position: absolute;
-                top: -30px;
-                left: 50%;
-                margin-left: -40%;
-                width: 80%;
-                height: 20px;
-                border: 1px dashed rgba($white, .5);
-                border-width: 0 1px;
-            }
+        &::before {
+            display: none;
         }
-        em {
-            position: absolute;
-            top: 50%;
-            left: -14px;
-            margin-top: -14px;
-            width: 28px;
-            height: 28px;
-            background: $maincolor;
-            color: $white;
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 28px;
-            text-align: center;
-            border-radius: 15px;
-        }
-        span {
-            display: block;
-            font-size: 15px;
-            line-height: 1.54;
-            word-break: keep-all;
-        }
-        &:first-child,
-        &.current-step {
-            color: $white;
+        h4 {
             font-weight: 600;
-            em {
-                background: $subcolor1;
-                animation: effectPoing 1s infinite;
+            font-size: 13px;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            width: 100%;
+            background: none;
+            backdrop-filter: none;
+            font-weight: 600;
+            font-size: 13px;
+            label + label {
+                margin-left: 8px;
             }
         }
     }
 }
 
 .form-exchange {
+    z-index: 1;
+    position: relative;
     form {
         box-sizing: border-box;
         padding: 40px;
         background: $white;
-        border-radius: 8px;
+        border-radius: 8px 8px 8px 0;
     }
     .columns + .columns {
         margin-top: 20px;
@@ -309,7 +382,7 @@ body {
     border-right: 0;
 }
 
-.modal.active .modal-overlay,
+.modal.modal-show .modal-overlay,
 .modal:target .modal-overlay {
     background: rgba(darken($subcolor1, 20%), .4);
 }
@@ -396,8 +469,71 @@ body {
     }
 }
 
+.wallet-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .wallet-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid $border;
+        font-size: 16px;
+        border-radius: 8px;
+        img {
+            margin-bottom: 8px;
+            width: 150px;
+        }
+    }
+}
+
+.wallet-name {
+    display: inline-block;
+    padding: 8px;
+    border: 1px solid rgba(darken($subcolor1, 20%), .4);
+    background: $bg;
+    color: $maincolor;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 2px;
+    & + .modal-title {
+        margin-top: 16px;
+        font-weight: 600;
+        font-size: 13px !important;
+    }
+}
+
+.ux-hint {
+    padding: 6px;
+    background: $bg;
+    font-size: 14px;
+    word-break: keep-all;
+    border-radius: 2px;
+    a {
+        font-weight: 600;
+        &:hover {
+            color: $subcolor1;
+        }
+    }
+}
+
+.block-msg {
+    text-align: center;
+    .icon-4x,
+    img {
+        display: block;
+        margin: 0 auto 16px;
+        width: 100px;
+        color: $subcolor1;
+    }
+}
+
 footer {
-    padding: 40px 0;
+    padding: 32px 0;
     border-top: 1px solid rgba($white, .2);
     backdrop-filter: blur(10px);
     color: $white;

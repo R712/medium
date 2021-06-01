@@ -11,9 +11,9 @@
 <body class="bg0">
 
 <div class="bridge-wrap">
-    
+
     <!--
-        GNB
+        GNB : 지갑 연결 후
     -->
     <header class="navbar wow fadeInDown">
         <section class="navbar-section">
@@ -23,7 +23,24 @@
             <a class="btn btn-link" href="#" onclick="javascript:void(0);">Docs</a>
         </section>
         <section class="navbar-section">
-            <button id="btn-connect-wallet" class="btn btn-primary btn-lg">지갑 연결</button>
+            <div class="dropdown dropdown-right">
+                <a href="#" class="btn dropdown-toggle" tabindex="0">
+                    <strong>0xc74e94...15c9da</strong>
+                    <i class="icon icon-caret"></i>
+                </a>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a href="#">내 지갑 정보 보기</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">트랜잭션 히스토리 보기</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="menu-item">
+                        <a href="index.html">로그아웃</a>
+                    </li>
+                </ul>
+            </div>
         </section>
     </header>
 
@@ -276,61 +293,45 @@
         </div>
     </div>
 
-    <!--
-        지갑 연결 모달
-    -->
-    <div class="modal modal-sm" id="modal-connect-wallet">
-        <a href="#close" class="modal-overlay" aria-label="Close"></a>
-        <div class="modal-container">
-            <div class="modal-header">
-                <button class="btn btn-clear float-right" aria-label="Close"></button>
-                <div class="modal-title">지갑 연결하기</div>
-                <p>선택하신 체인에 맞는 지갑을 연결해주세요.</p>
-            </div>
-            <div class="modal-body">
-                <div class="wallet-wrap">
-                    <div class="wallet-item">
-                        <img src="dummy/metamask.png" alt="메타마스크" />
-                        <strong>메타마스크</strong>
-                    </div>
-                    <div class="ux-hint">
-                        지갑이 없나요? 지금 다운로드 하세요. <a href="#" class="btn btn-link">다운로드<i class="icon icon-download"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button id="btn-wallet-done" class="btn btn-block btn-primary btn-lg">확인</button>
-            </div>
-        </div>
-    </div>
-
-    <!--
-        지갑 연결 완료 모달
-    -->
-    <div class="modal modal-sm" id="modal-wallet-done">
-        <a href="#close" class="modal-overlay" aria-label="Close"></a>
-        <div class="modal-container">
-            <div class="modal-header">
-                <button class="btn btn-clear float-right" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="block-msg">
-                    <img src="img/i-done.svg" />
-                    <div class="wallet-name">0deXDdedadf44sadsdFG7</div>
-                    <div class="modal-title">지갑 연결이 완료되었습니다.</div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button onclick="location.href='index-connected.html'" class="btn btn-block btn-primary btn-lg">닫기</button>
-            </div>
-        </div>
-    </div>
-
     <footer class="wow fadeInUp">Copyright 2021 &copy; <strong>MEDIUM.</strong> All rights reserved.</footer>
 
 </div>
 
-<script src="js/bridge.js"></script>
+<script type="text/javascript">
+const btnChooseCoin = document.querySelector('#btn-choose-coin');
+const modalChooseCoin = document.querySelector('#modal-choose-coin');
+const btnModalClose = document.querySelectorAll('.btn-clear');
+const modals = document.querySelectorAll('.modal');
+const modalOverlay = document.querySelectorAll('.modal-overlay');
+
+btnChooseCoin.addEventListener('click', () => {
+    modalChooseCoin.classList.toggle('modal-show');
+});
+
+btnModalClose.forEach(button => {
+    button.addEventListener('click', () => {
+        document.querySelector('.modal-show').classList.remove('modal-show');
+    });
+});
+
+modalOverlay.forEach(a => {
+    a.addEventListener('click', () => {
+        document.querySelector('.modal-show').classList.remove('modal-show');
+    });
+});
+
+let bgThemeVal;
+
+const bgRadios = document.querySelectorAll('input[name=bg]');
+const bgBody = document.querySelector('body');
+bgRadios.forEach(radio => {
+    radio.addEventListener('click', function (el) {
+        bgThemeVal = radio.value;
+        bgBody.removeAttribute('class');
+        bgBody.classList.add(bgThemeVal);
+    });
+});
+</script>
 <script src="js/wow.min.js"></script>
 <script>
     new WOW().init();

@@ -20,22 +20,39 @@
 }
 
 body {
-  background: url("../bg0.jpg") no-repeat fixed center;
+  min-height: 980px;
+  background: url("../img/bg0.jpg") no-repeat fixed center;
   background-size: cover;
   scroll-behavior: smooth;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   -webkit-appearance: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.bg0 {
+  background-image: url("../img/bg0.jpg");
+}
+
+body.bg1 {
+  background-image: url("../img/bg1.jpg");
+}
+
+body.bg2 {
+  background-image: url("../img/bg2.jpg");
+}
+
+body.bg3 {
+  background-image: url("../img/bg3.jpg");
+}
+
 :hover,
 :hover *,
 :hover::after,
 :hover::before {
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
 }
 
 .bridge-wrap {
@@ -104,41 +121,41 @@ body {
   letter-spacing: 0.5px;
 }
 
-.navbar .navbar-brand {
-  margin-right: .8rem;
+.navbar .navbar-section:first-child .navbar-brand {
+  margin-right: 28px;
 }
 
-.navbar .navbar-brand::before {
+.navbar .navbar-section:first-child .navbar-brand::before {
   content: '';
   display: block;
   width: 176px;
   height: 24px;
-  background: url("../logo.svg") no-repeat center;
+  background: url("../img/logo.svg") no-repeat center;
   background-size: 176px;
 }
 
-.navbar .navbar-brand span {
+.navbar .navbar-section:first-child .navbar-brand span {
   display: none;
 }
 
-.navbar a, .navbar .btn-link {
+.navbar .navbar-section:first-child a, .navbar .navbar-section:first-child .btn-link {
   border: 0;
   color: #FFF;
 }
 
-.navbar a:hover, .navbar .btn-link:hover {
+.navbar .navbar-section:first-child a:hover, .navbar .navbar-section:first-child .btn-link:hover {
   background: none;
   color: #66b1f6;
 }
 
-.navbar .btn-link {
+.navbar .navbar-section:first-child .btn-link {
   position: relative;
-  margin: 0 20px;
+  margin: 0 18px;
   padding: 7px 0;
   font-weight: 600;
 }
 
-.navbar .btn-link::after {
+.navbar .navbar-section:first-child .btn-link::after {
   content: '';
   position: absolute;
   left: 0;
@@ -148,24 +165,25 @@ body {
   background: #66b1f6;
 }
 
-.navbar .btn-link:hover::after {
+.navbar .navbar-section:first-child .btn-link:hover::after {
   width: 100%;
 }
 
-.navbar .is-current,
-.navbar .is-current:hover {
+.navbar .navbar-section:first-child .is-current,
+.navbar .navbar-section:first-child .is-current:hover {
   color: #FFF;
 }
 
-.navbar .is-current::after,
-.navbar .is-current:hover::after {
+.navbar .navbar-section:first-child .is-current::after,
+.navbar .navbar-section:first-child .is-current:hover::after {
   width: 100%;
   background: #FFF;
 }
 
 .navbar .btn.btn-primary {
   position: relative;
-  background: #FFF url("../i-connect.svg") no-repeat 16px center;
+  border-color: #FFF;
+  background: #FFF url("../img/i-connect.svg") no-repeat 16px center;
   padding-right: 20px;
   width: 180px;
   height: 54px;
@@ -182,6 +200,29 @@ body {
   background-color: #deeefd;
 }
 
+.navbar .dropdown-toggle {
+  border-color: #FFF;
+  background: #FFF url("../img/i-lock.svg") no-repeat 16px center;
+  padding: 0 12px 0 42px;
+  height: 54px;
+  color: #084a88;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: right;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 16px #0a65b9;
+          box-shadow: 0 1px 16px #0a65b9;
+}
+
+.navbar .dropdown-toggle strong {
+  padding-right: 8px;
+}
+
+.navbar .dropdown-toggle:hover, .navbar .dropdown-toggle:focus {
+  border-color: #FFF !important;
+  background-color: #deeefd;
+}
+
 .introduce {
   margin-bottom: 32px;
   padding: 0 16px;
@@ -190,7 +231,6 @@ body {
   font-weight: 500;
   font-size: 22px;
   line-height: 1.54;
-  text-align: right;
 }
 
 .introduce span {
@@ -202,7 +242,24 @@ body {
   font-size: 32px;
 }
 
-.tutorial div {
+.aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.aside .tutorial {
+  position: relative;
+}
+
+.aside .tutorial div {
   position: relative;
   margin-right: 16px;
   padding: 24px;
@@ -213,11 +270,11 @@ body {
   border-radius: 8px;
 }
 
-.tutorial div + div {
+.aside .tutorial div + div {
   margin-top: 40px;
 }
 
-.tutorial div + div::before {
+.aside .tutorial div + div::before {
   content: '';
   position: absolute;
   top: -30px;
@@ -229,7 +286,7 @@ body {
   border-width: 0 1px;
 }
 
-.tutorial div em {
+.aside .tutorial div em {
   position: absolute;
   top: 50%;
   left: -14px;
@@ -245,22 +302,66 @@ body {
   border-radius: 15px;
 }
 
-.tutorial div span {
+.aside .tutorial div span {
   display: block;
   font-size: 15px;
   line-height: 1.54;
   word-break: keep-all;
 }
 
-.tutorial div:first-child, .tutorial div.current-step {
+.aside .tutorial div:first-child, .aside .tutorial div.current-step {
   color: #FFF;
   font-weight: 600;
 }
 
-.tutorial div:first-child em, .tutorial div.current-step em {
+.aside .tutorial div:first-child em, .aside .tutorial div.current-step em {
   background: #0D7FE9;
   -webkit-animation: effectPoing 1s infinite;
           animation: effectPoing 1s infinite;
+}
+
+.aside .theme {
+  margin-right: 16px;
+  padding: 20px 20px 16px;
+  background: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+
+.aside .theme::before {
+  display: none;
+}
+
+.aside .theme h4 {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.aside .theme .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  width: 100%;
+  background: none;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.aside .theme .form-group label + label {
+  margin-left: 8px;
+}
+
+.form-exchange {
+  z-index: 1;
+  position: relative;
 }
 
 .form-exchange form {
@@ -268,7 +369,7 @@ body {
           box-sizing: border-box;
   padding: 40px;
   background: #FFF;
-  border-radius: 8px;
+  border-radius: 8px 8px 8px 0;
 }
 
 .form-exchange .columns + .columns {
@@ -378,7 +479,7 @@ body {
   border-right: 0;
 }
 
-.modal.active .modal-overlay,
+.modal.modal-show .modal-overlay,
 .modal:target .modal-overlay {
   background: rgba(8, 74, 136, 0.4);
 }
@@ -482,8 +583,95 @@ body {
   border-radius: 4px;
 }
 
+.wallet-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wallet-wrap .wallet-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #DADADA;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.wallet-wrap .wallet-item img {
+  margin-bottom: 8px;
+  width: 150px;
+}
+
+.wallet-name {
+  display: inline-block;
+  padding: 8px;
+  border: 1px solid rgba(8, 74, 136, 0.4);
+  background: #F6FBFF;
+  color: #003893;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+.wallet-name + .modal-title {
+  margin-top: 16px;
+  font-weight: 600;
+  font-size: 13px !important;
+}
+
+.ux-hint {
+  padding: 6px;
+  background: #F6FBFF;
+  font-size: 14px;
+  word-break: keep-all;
+  border-radius: 2px;
+}
+
+.ux-hint a {
+  font-weight: 600;
+}
+
+.ux-hint a:hover {
+  color: #0D7FE9;
+}
+
+.block-msg {
+  text-align: center;
+}
+
+.block-msg .icon-4x,
+.block-msg img {
+  display: block;
+  margin: 0 auto 16px;
+  width: 100px;
+  color: #0D7FE9;
+}
+
 footer {
-  padding: 40px 0;
+  padding: 32px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
