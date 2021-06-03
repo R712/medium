@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>Medium Bridge : Explorer</title>
+    <meta name="description" content="Medium Bridge">
+    <meta name="author" content="Medium">
+    <link rel="stylesheet" href="asset/style.css">
+</head>
+
+<body class="bg0">
+
+<div class="bridge-wrap">
+
+    <!--
+        GNB : 지갑 연결 후
+    -->
+    <header class="navbar wow fadeInDown">
+        <section class="navbar-section">
+            <a class="navbar-brand" href="index.html"><span>Medium Bridge</span></a>
+            <a class="btn btn-link" href="index-connected.html">Bridge</a>
+            <a class="btn btn-link is-current" href="explorer.html">Explorer</a>
+            <a class="btn btn-link" href="#" onclick="javascript:void(0);">Docs</a>
+        </section>
+        <section class="navbar-section">
+            <div class="dropdown dropdown-right">
+                <a href="#" class="btn dropdown-toggle" tabindex="0">
+                    <strong>0xc74e94...15c9da</strong>
+                    <i class="icon icon-caret"></i>
+                </a>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a id="btn-wallet-detail" href="javascript:void(0);">내 지갑 정보 보기</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="explorer.html">트랜잭션 히스토리 보기</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="menu-item">
+                        <a href="index.html">로그아웃</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </header>
+
+    <!--
+        컨테이너
+    -->
+    <div class="container">
+
+        <!--
+            트랜잭션 내역 페이지
+        -->
+        <div class="bridge-explorer wow fadeIn fast">
+
+            <div class="headline">
+                <i data-icon="history"></i>
+                <p>미디움 브릿지 익스플로러로 전송한 코인의 트랜잭션 내역을 확인하세요.</p>
+            </div>
+    
+            <!--
+                트랜잭션 내역 검색 폼
+            -->
+            <fieldset>
+                <legend>트랜잭션 내역 검색</legend>
+                <div class="input-group">
+                    <div class="dropdown">
+                        <button href="#" class="btn btn-lg dropdown-toggle" tabindex="0">
+                        MDL <i class="icon icon-caret"></i>
+                        </button>
+                        <ul class="menu">
+                            <li class="menu-item">
+                                <a href="#">MDL</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">이더리움</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">클레이튼</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">MDL_eth</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <input class="form-input input-lg" type="text" placeholder="지갑 주소 또는 트랜잭션 해시로 검색 가능합니다." />
+                    <button class="btn btn-lg btn-primary input-group-btn">검색</button>
+                </div>
+            </fieldset>
+
+            <!--
+                트랜잭션 내역 테이블
+            -->
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>지갑 주소</th>
+                        <th>코인</th>
+                        <th>수량</th>
+                        <th>날짜/시간</th>
+                        <th>보내는 체인</th>
+                        <th>받는 체인</th>
+                        <th>상태</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="is-ing">
+                        <td>
+                            <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+                        </td>
+                        <td>MDL</td>
+                        <td>50</td>
+                        <td>2021-06-02 11:11:33</td>
+                        <td><a href="#">MDL</a></td>
+                        <td><a href="#">이더리움</a></td>
+                        <td>
+                            <div data-status="ing">진행중</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+                        </td>
+                        <td>MDL</td>
+                        <td>50</td>
+                        <td>2021-06-02 11:11:33</td>
+                        <td><a href="#">MDL</a></td>
+                        <td><a href="#">이더리움</a></td>
+                        <td>
+                            <div data-status="done">완료</div>
+                        </td>
+                    </tr>
+                    <tr class="is-fail">
+                        <td>
+                            <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+                        </td>
+                        <td>MDL</td>
+                        <td>50</td>
+                        <td>2021-06-02 11:11:33</td>
+                        <td><a href="#">MDL</a></td>
+                        <td><a href="#">이더리움</a></td>
+                        <td>
+                            <div data-status="fail">실패</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+                        </td>
+                        <td>MDL</td>
+                        <td>50</td>
+                        <td>2021-06-02 11:11:33</td>
+                        <td><a href="#">MDL</a></td>
+                        <td><a href="#">이더리움</a></td>
+                        <td>
+                            <div data-status="done">완료</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+                        </td>
+                        <td>MDL</td>
+                        <td>50</td>
+                        <td>2021-06-02 11:11:33</td>
+                        <td><a href="#">MDL</a></td>
+                        <td><a href="#">이더리움</a></td>
+                        <td>
+                            <div data-status="done">완료</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+                        </td>
+                        <td>MDL</td>
+                        <td>50</td>
+                        <td>2021-06-02 11:11:33</td>
+                        <td><a href="#">MDL</a></td>
+                        <td><a href="#">이더리움</a></td>
+                        <td>
+                            <div data-status="done">완료</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+                        </td>
+                        <td>MDL</td>
+                        <td>50</td>
+                        <td>2021-06-02 11:11:33</td>
+                        <td><a href="#">MDL</a></td>
+                        <td><a href="#">이더리움</a></td>
+                        <td>
+                            <div data-status="done">완료</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+                        </td>
+                        <td>MDL</td>
+                        <td>50</td>
+                        <td>2021-06-02 11:11:33</td>
+                        <td><a href="#">MDL</a></td>
+                        <td><a href="#">이더리움</a></td>
+                        <td>
+                            <div data-status="done">완료</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+                        </td>
+                        <td>MDL</td>
+                        <td>50</td>
+                        <td>2021-06-02 11:11:33</td>
+                        <td><a href="#">MDL</a></td>
+                        <td><a href="#">이더리움</a></td>
+                        <td>
+                            <div data-status="done">완료</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+                        </td>
+                        <td>MDL</td>
+                        <td>50</td>
+                        <td>2021-06-02 11:11:33</td>
+                        <td><a href="#">MDL</a></td>
+                        <td><a href="#">이더리움</a></td>
+                        <td>
+                            <div data-status="done">완료</div>
+                        </td>
+                    </tr>
+                    <!--
+                        내역 없을 때
+                    <tr>
+                        <td colspan="7" class="is-empty">내역이 아직 없습니다.</td>
+                    </tr>
+                    -->
+                </tbody>
+            </table>
+
+            <!--
+                페이지
+            -->
+            <ul class="pagination">
+                <li class="page-item disabled">
+                    <a href="#" tabindex="-1">이전</a>
+                </li>
+                <li class="page-item active">
+                    <a href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a href="#">4</a>
+                </li>
+                <li class="page-item">
+                    <a href="#">5</a>
+                </li>
+                <li class="page-item">
+                    <span>...</span>
+                </li>
+                <li class="page-item">
+                    <a href="#">8</a>
+                </li>
+                <li class="page-item">
+                    <a href="#">다음</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!--
+        내 지갑 주소 정보 보기 모달
+    -->
+    <div class="modal modal-sm" id="modal-wallet-detail">
+        <a href="#close" class="modal-overlay" aria-label="Close"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <button class="btn btn-clear float-right" aria-label="Close"></button>
+                <div class="modal-title">내 지갑</div>
+            </div>
+            <div class="modal-body">
+                <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-block btn-lg"><i data-icon="copy"></i> 지갑 주소 복사하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        푸터
+    -->
+    <footer class="wow fadeInUp">Copyright 2021 &copy; <strong>MEDIUM.</strong> All rights reserved.</footer>
+
+</div>
+
+<script type="text/javascript">
+//
+//  대부분의 스크립트는 미리보기 시연용이며, 디자이너에 의해 작성되어 있어서
+//  실제 프론트개발에 적합하지 않을 수 있으므로 참고만 부탁드려요!
+//
+
+//
+//  빠른 호출용 정의
+//
+const btnWalletDetail = document.querySelector('#btn-wallet-detail');
+const modalWalletDetail = document.querySelector('#modal-wallet-detail');
+const btnModalClose = document.querySelectorAll('.btn-clear');
+const modals = document.querySelectorAll('.modal');
+const modalOverlay = document.querySelectorAll('.modal-overlay');
+
+//
+//  모달 닫기 버튼 클릭시 모달 닫기
+//
+btnModalClose.forEach(button => {
+    button.addEventListener('click', () => {
+        document.querySelector('.modal-show').classList.remove('modal-show');
+    });
+});
+
+//
+//  모달 배경 오버레이 클릭시 모달 닫기
+//
+modalOverlay.forEach(a => {
+    a.addEventListener('click', () => {
+        document.querySelector('.modal-show').classList.remove('modal-show');
+    });
+});
+
+//
+//  내 지갑 정보 보기 모달 호출
+//
+btnWalletDetail.addEventListener('click', () => {
+    modalWalletDetail.classList.toggle('modal-show');
+});
+
+</script>
+<!-- animate.css * wow.js 페이지 로드시 효과 라이브러리 -->
+<script src="js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+</body>
+</html>

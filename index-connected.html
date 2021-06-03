@@ -17,9 +17,9 @@
     -->
     <header class="navbar wow fadeInDown">
         <section class="navbar-section">
-            <a class="navbar-brand" href="#" onclick="javascript:void(0);"><span>Medium Bridge</span></a>
-            <a class="btn btn-link is-current" href="#" onclick="javascript:void(0);">Bridge</a>
-            <a class="btn btn-link" href="#" onclick="javascript:void(0);">Explorer</a>
+            <a class="navbar-brand" href="index.html"><span>Medium Bridge</span></a>
+            <a class="btn btn-link is-current" href="index-connected.html">Bridge</a>
+            <a class="btn btn-link" href="explorer.html">Explorer</a>
             <a class="btn btn-link" href="#" onclick="javascript:void(0);">Docs</a>
         </section>
         <section class="navbar-section">
@@ -30,10 +30,10 @@
                 </a>
                 <ul class="menu">
                     <li class="menu-item">
-                        <a href="#">내 지갑 정보 보기</a>
+                        <a id="btn-wallet-detail" href="javascript:void(0);">내 지갑 정보 보기</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#">트랜잭션 히스토리 보기</a>
+                        <a href="explorer.html">트랜잭션 히스토리 보기</a>
                     </li>
                     <li class="divider"></li>
                     <li class="menu-item">
@@ -209,6 +209,26 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div class="tax-info">
+                                <button id="btn-tax" class="btn btn-sm btn-link"><i data-icon="info"></i>수수료 안내</button>
+                                <div class="tax-data">
+                                    <span class="tax-item">
+                                        <span class="tax-label">잔액:</span>
+                                        <span class="tax-value">5,000</span>
+                                        <span class="tax-type">MDM</span>
+                                    </span>
+                                    <span class="tax-item">
+                                        <span class="tax-label">수수료:</span>
+                                        <span class="tax-value">0</span>
+                                        <span class="tax-type">MDM</span>
+                                    </span>
+                                    <span class="tax-item">
+                                        <span class="tax-label">Bridge fee:</span>
+                                        <span class="tax-value">0</span>
+                                        <span class="tax-type">MDM</span>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="columns col-gapless">
@@ -244,7 +264,7 @@
                         <li>메타마스크 지갑 사용 시 컨트랙트 승인(최초 1회) 후에 코인 전환을 진행할 수 있습니다.</li>
                         <li>Tax, Bridge fee 를 잘 확인하시고 진행 해주세요.</li>
                     </ul>
-                    <button class="btn-exchange btn btn-lg btn-primary btn-block">전환하기</button>
+                    <button id="btn-exchange" class="btn-exchange btn btn-lg btn-primary btn-block">전환하기</button>
                 </form>
             </main>
 
@@ -262,7 +282,7 @@
                 <button class="btn btn-clear float-right" aria-label="Close"></button>
                 <div class="modal-title">코인 선택</div>
                 <p>전환할 코인을 선택하세요.</p>
-                <div class="has-icon-left">
+                <div class="form-group has-icon-left">
                     <input type="text" class="form-input input-lg" placeholder="코인명으로 검색하세요.">
                     <i class="form-icon icon icon-search"></i>
                 </div>
@@ -293,45 +313,263 @@
         </div>
     </div>
 
+    <!--
+        내 지갑 주소 정보 보기 모달
+    -->
+    <div class="modal modal-sm" id="modal-wallet-detail">
+        <a href="#close" class="modal-overlay" aria-label="Close"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <button class="btn btn-clear float-right" aria-label="Close"></button>
+                <div class="modal-title">내 지갑</div>
+            </div>
+            <div class="modal-body">
+                <a href="javascript:void(0);" class="wallet-name"><i data-icon="window"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</a>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-block btn-lg"><i data-icon="copy"></i> 지갑 주소 복사하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        수수료 안내 모달
+    -->
+    <div class="modal" id="modal-tax">
+        <a href="#close" class="modal-overlay" aria-label="Close"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <button class="btn btn-clear float-right" aria-label="Close"></button>
+                <div class="modal-title">수수료 안내</div>
+                <p>미디움 브릿지를 이용하면 아래와 같이 수수료 발생이 됩니다.<br/>해당 정책은 지속 업데이트 될 수 있습니다. 참고 부탁드립니다.</p>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>From체인</th>
+                            <th>수수료</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>이더리움</th>
+                            <td>전송자산의 0.1% Tax 발생</td>
+                        </tr>
+                        <tr>
+                            <th>클레이튼</th>
+                            <td rowspan="3">
+<pre>Tax +bridging fee
+전송자산의 0.1% Tax,
+Bridging fee는 각 체인 네이티브 토큰 정량으로 계산
+
+예) 1,000 eMDM(erc 20)을 MDL로 전송 시 1 MDM tax 발생
+1,000 MDM(MDL)을 이더리움으로 전송 시 1MDM + 60 MDM(bridge fee)
+총 61MDM 필요
+
+• 단, MDL-MDL-eth 크로스체인간 전환의 경우 아래와 같이 계산합니다.
+MDL -> MDL_eth(besu) 일 경우 tax 0.4MDM
+MDL_eth(besu) -> MDL tax 0.2MDM+ Gas Fee</pre>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>MDL</th>
+                        </tr>
+                        <tr>
+                            <th>클레이튼</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-block btn-lg">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        전환하기 모달
+    -->
+    <div class="modal" id="modal-exchange">
+        <a href="#close" class="modal-overlay" aria-label="Close"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <button class="btn btn-clear float-right" aria-label="Close"></button>
+                <div class="modal-title">전환할 코인 확인</div>
+                <p>전환할 코인의 수량과 보내고 받을 체인, 수령 주소를 확인해주세요.</p>
+            </div>
+            <div class="modal-body">
+                <div class="exchange-coin">
+                    <div>
+                        <span>From</span>
+                        <img src="dummy/eth.webp" class="i-blockchain" alt="이더리움"/>
+                        <strong>이더리움</strong>
+                    </div>
+                    <div>
+                        <span>To</span>
+                        <img src="dummy/mdm.webp" class="i-blockchain" alt="MDM"/>
+                        <strong>MDM</strong>
+                    </div>
+                </div>
+                <div class="exchange-detail">
+                    <div>
+                        <span>전환 코인</span>
+                        <strong>MDM</strong>
+                    </div>
+                    <div>
+                        <span>Tax</span>
+                        <strong>0.5 MDM</strong>
+                    </div>
+                    <div>
+                        <span>Bridge fee</span>
+                        <strong>0 MDM</strong>
+                    </div>
+                    <div>
+                        <span>수령할 코인 수</span>
+                        <strong>499.5 MDM</strong>
+                    </div>
+                </div>
+                <div class="exchange-address">
+                    <span>수령할 지갑 주소</span>
+                    <div class="wallet-name"><i data-icon="wallet"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</div>
+                </div>
+                <div data-caution="danger">보내시는 주소가 맞는지 다시 한 번 확인해주세요. 주소 오 입력 시 코인 전환이 정상적으로 이루어지지 않아 자산을 잃을 수 있습니다.</div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-sending" class="btn btn-block btn-primary btn-lg">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        전송 모달
+    -->
+    <div class="modal" id="modal-sending">
+        <a href="#close" class="modal-overlay" aria-label="Close"></a>
+        <div class="modal-container">
+            <div class="modal-header">
+                <button class="btn btn-clear float-right" aria-label="Close"></button>
+                <div class="modal-title">전송 완료</div>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon addon-lg">트랜잭션 해시</span>
+                    <input type="text" class="form-input input-lg" value="03xkjsd390905klJ" readonly />
+                    <button class="btn btn-primary input-group-btn btn-lg">검색</button>
+                </div>
+                <!-- 전송완료 - 처리중 -->
+                <div class="ux-hint"><div class="loading loading-lg"></div>트랜잭션 처리 중입니다. 잠시만 기다려주세요.</div>
+                <!-- 전송완료 - 처리완료 -->
+                <div class="ux-hint"><i data-icon="success"></i> 코인 전환이 완료 되었습니다.</div>
+                <!-- 전송실패 -->
+                <div class="ux-hint text-error"><i data-icon="error"></i> 알수없는 이유로 전송이 실패 되었습니다. 다시한번 시도해주세요.</div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-block btn-primary btn-lg">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        푸터
+    -->
     <footer class="wow fadeInUp">Copyright 2021 &copy; <strong>MEDIUM.</strong> All rights reserved.</footer>
 
 </div>
 
 <script type="text/javascript">
+//
+//  대부분의 스크립트는 미리보기 시연용이며, 디자이너에 의해 작성되어 있어서
+//  실제 프론트개발에 적합하지 않을 수 있으므로 참고만 부탁드려요!
+//
+
+//
+//  빠른 호출용 정의
+//
 const btnChooseCoin = document.querySelector('#btn-choose-coin');
 const modalChooseCoin = document.querySelector('#modal-choose-coin');
+const btnWalletDetail = document.querySelector('#btn-wallet-detail');
+const modalWalletDetail = document.querySelector('#modal-wallet-detail');
+const btnTax = document.querySelector('#btn-tax');
+const modalTax = document.querySelector('#modal-tax');
+const btnExchange = document.querySelector('#btn-exchange');
+const modalExchange = document.querySelector('#modal-exchange');
+const btnSending = document.querySelector('#btn-sending');
+const modalSending = document.querySelector('#modal-sending');
 const btnModalClose = document.querySelectorAll('.btn-clear');
 const modals = document.querySelectorAll('.modal');
 const modalOverlay = document.querySelectorAll('.modal-overlay');
 
-btnChooseCoin.addEventListener('click', () => {
-    modalChooseCoin.classList.toggle('modal-show');
-});
-
+//
+//  모달 닫기 버튼 클릭시 모달 닫기
+//
 btnModalClose.forEach(button => {
     button.addEventListener('click', () => {
         document.querySelector('.modal-show').classList.remove('modal-show');
     });
 });
 
+//
+//  모달 배경 오버레이 클릭시 모달 닫기
+//
 modalOverlay.forEach(a => {
     a.addEventListener('click', () => {
         document.querySelector('.modal-show').classList.remove('modal-show');
     });
 });
 
-let bgThemeVal;
+//
+//  코인 선택 모달 호출
+//
+btnChooseCoin.addEventListener('click', () => {
+    modalChooseCoin.classList.toggle('modal-show');
+});
 
+//
+//  수수료 안내 모달 호출
+//
+btnTax.addEventListener('click', () => {
+    modalTax.classList.toggle('modal-show');
+});
+
+//
+//  전환하기 모달 호출
+//
+btnExchange.addEventListener('click', () => {
+    modalExchange.classList.toggle('modal-show');
+});
+
+//
+//  전환 트랜잭션 시작 모달 호출
+//
+btnSending.addEventListener('click', () => {
+    modalExchange.classList.toggle('modal-show');
+    modalSending.classList.toggle('modal-show');
+});
+
+//
+//  내 지갑 정보 보기 모달 호출
+//
+btnWalletDetail.addEventListener('click', () => {
+    modalWalletDetail.classList.toggle('modal-show');
+});
+
+//
+//  배경 샘플 테스트용
+//
+let bgThemeVal;
 const bgRadios = document.querySelectorAll('input[name=bg]');
 const bgBody = document.querySelector('body');
 bgRadios.forEach(radio => {
-    radio.addEventListener('click', function (el) {
+    radio.addEventListener('click', () => {
         bgThemeVal = radio.value;
         bgBody.removeAttribute('class');
         bgBody.classList.add(bgThemeVal);
     });
 });
+
 </script>
+<!-- animate.css * wow.js 페이지 로드시 효과 라이브러리 -->
 <script src="js/wow.min.js"></script>
 <script>
     new WOW().init();
