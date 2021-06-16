@@ -43,7 +43,7 @@ $containerMaxW: 1180px;
 //
 body {
     min-height: 980px;
-    background: url('../img/bg0.jpg') no-repeat fixed center;
+    background: url('../img/bg0.png') no-repeat fixed center;
     background-size: cover;
     scroll-behavior: smooth;
     overflow-y: auto;
@@ -52,7 +52,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     &.bg0 {
-        background-image: url('../img/bg0.jpg');
+        background-image: url('../img/bg0.png');
     }
     &.bg1 {
         background-image: url('../img/bg1.jpg');
@@ -84,9 +84,9 @@ body {
     align-items: stretch;
     min-height: 100vh;
     background: rgb(2,0,36);
-    background: -moz-linear-gradient(90deg, rgba(2,0,36,0.8) 0%, rgba(0,56,147,0.85) 35%, rgba(13,127,233,0.8) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(2,0,36,0.8) 0%, rgba(0,56,147,0.85) 35%, rgba(13,127,233,0.8) 100%);
-    background: linear-gradient(90deg, rgba(2,0,36,0.8) 0%, rgba(0,56,147,0.85) 35%, rgba(13,127,233,0.8) 100%);
+    background: -moz-linear-gradient(90deg, rgba(2,0,36,0.8) 0%, rgba(0,56,147,0.85) 35%, rgba(2,0,36,0.8) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(2,0,36,0.8) 0%, rgba(0,56,147,0.85) 35%, rgba(2,0,36,0.8) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,0.8) 0%, rgba(0,56,147,0.85) 35%, rgba(2,0,36,0.8) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#0d7fe9",GradientType=1);
     cursor: default;
     header, .container, footer {
@@ -106,7 +106,7 @@ body {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    padding: 120px 50px 40px;
+    padding: 100px 50px 40px;
     max-width: $containerMaxW;
     min-width: $containerMinW;
     > .columns {
@@ -127,7 +127,7 @@ body {
     letter-spacing: 0.5px;
     .navbar-section:first-child {
         .navbar-brand {
-            margin-right: 28px;
+            margin-right: 40px;
             &::before {
                 content: '';
                 display: block;
@@ -205,7 +205,7 @@ body {
         font-size: 16px;
         text-align: right;
         border-radius: 4px;
-        box-shadow: 0 1px 16px darken($subcolor1, 10%);
+        box-shadow: 0 1px 16px darken($maincolor, 15%);
         strong {
             padding-right: 8px;
         }
@@ -214,6 +214,11 @@ body {
             border-color: $white !important;
             background-color: lighten($subcolor1, 45%);
         }
+    }
+    .icon-shutdown {
+        margin-right: 4px;
+        font-size: 14px;
+        opacity: .4;
     }
 }
 
@@ -573,6 +578,12 @@ body {
             width: 128px;
         }
     }
+    .btn-sm {
+        font-weight: 600;
+        &:hover {
+            color: $subcolor1;
+        }
+    }
 }
 
 //
@@ -699,6 +710,11 @@ body {
         & + div {
             border-top: 1px solid $border;
         }
+        &:only-child {
+            margin: 12px 0;
+            border: 1px solid $border;
+            border-width: 1px 0;
+        }
     }
     span {
         color: $txtsubcolor;
@@ -816,6 +832,7 @@ td.is-empty {
     padding: 6px 12px;
     color: $maincolor;
     font-size: 14px;
+    line-height: 1.65;
     word-break: keep-all;
     text-align: center;
     a {
@@ -898,6 +915,43 @@ footer {
 }
 
 //
+//  모바일 접근시 안내
+//
+.is-mobile {
+    opacity: 0;
+    display: none;
+    z-index: 500;
+    box-sizing: border-box;
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    width: 90%;
+    height: 90%;
+    background: rgba(255,255,255,.8);
+    color: $maincolor;
+    font-size: 16px;
+    word-break: keep-all;
+    line-height: 1.65;
+    text-align: center;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    strong {
+        font-size: 18px;
+    }
+}
+@media (max-width: 480px) {
+    .is-mobile {
+        opacity: 1;
+        display: flex;
+    }
+}
+
+//
 //  애니메이션 효과
 //  effectPoing : 튜토리얼 단계 숫자 고동치는 효과
 //  effectTransfer : 코인 to 코인 전환 화살표 이동 효과
@@ -948,5 +1002,21 @@ footer {
         height: 24px;
         background-size: 24px;
         background-image: url('../img/i-history.svg');
+    }
+    &[data-icon='alert'] {
+        display: block;
+        margin: 0 auto 12px;
+        width: 48px;
+        height: 48px;
+        background-size: 48px;
+        background-image: url('../img/i-alert.svg');
+    }
+    &[data-icon='hand'] {
+        display: block;
+        margin: 0 auto 12px;
+        width: 48px;
+        height: 48px;
+        background-size: 48px;
+        background-image: url('../img/i-hand.svg');
     }
 }

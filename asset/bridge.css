@@ -21,7 +21,7 @@
 
 body {
   min-height: 980px;
-  background: url("../img/bg0.jpg") no-repeat fixed center;
+  background: url("../img/bg0.png") no-repeat fixed center;
   background-size: cover;
   scroll-behavior: smooth;
   overflow-y: auto;
@@ -32,7 +32,7 @@ body {
 }
 
 body.bg0 {
-  background-image: url("../img/bg0.jpg");
+  background-image: url("../img/bg0.png");
 }
 
 body.bg1 {
@@ -68,8 +68,8 @@ body.bg3 {
           align-items: stretch;
   min-height: 100vh;
   background: #020024;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(2, 0, 36, 0.8)), color-stop(35%, rgba(0, 56, 147, 0.85)), to(rgba(13, 127, 233, 0.8)));
-  background: linear-gradient(90deg, rgba(2, 0, 36, 0.8) 0%, rgba(0, 56, 147, 0.85) 35%, rgba(13, 127, 233, 0.8) 100%);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(2, 0, 36, 0.8)), color-stop(35%, rgba(0, 56, 147, 0.85)), to(rgba(2, 0, 36, 0.8)));
+  background: linear-gradient(90deg, rgba(2, 0, 36, 0.8) 0%, rgba(0, 56, 147, 0.85) 35%, rgba(2, 0, 36, 0.8) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#0d7fe9",GradientType=1);
   cursor: default;
 }
@@ -101,7 +101,7 @@ body.bg3 {
           justify-content: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 120px 50px 40px;
+  padding: 100px 50px 40px;
   max-width: 1180px;
   min-width: 980px;
 }
@@ -122,7 +122,7 @@ body.bg3 {
 }
 
 .navbar .navbar-section:first-child .navbar-brand {
-  margin-right: 28px;
+  margin-right: 40px;
 }
 
 .navbar .navbar-section:first-child .navbar-brand::before {
@@ -210,8 +210,8 @@ body.bg3 {
   font-size: 16px;
   text-align: right;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 16px #0a65b9;
-          box-shadow: 0 1px 16px #0a65b9;
+  -webkit-box-shadow: 0 1px 16px #001b47;
+          box-shadow: 0 1px 16px #001b47;
 }
 
 .navbar .dropdown-toggle strong {
@@ -221,6 +221,12 @@ body.bg3 {
 .navbar .dropdown-toggle:hover, .navbar .dropdown-toggle:focus {
   border-color: #FFF !important;
   background-color: #deeefd;
+}
+
+.navbar .icon-shutdown {
+  margin-right: 4px;
+  font-size: 14px;
+  opacity: .4;
 }
 
 .introduce {
@@ -659,6 +665,14 @@ body.bg3 {
   width: 128px;
 }
 
+.wallet-wrap .btn-sm {
+  font-weight: 600;
+}
+
+.wallet-wrap .btn-sm:hover {
+  color: #0D7FE9;
+}
+
 .wallet-name {
   display: block;
   padding: 12px;
@@ -840,6 +854,12 @@ body.bg3 {
   border-top: 1px solid #EAEAEA;
 }
 
+.exchange-detail div:only-child {
+  margin: 12px 0;
+  border: 1px solid #EAEAEA;
+  border-width: 1px 0;
+}
+
 .exchange-detail span {
   color: #888;
   font-size: 13px;
@@ -977,6 +997,7 @@ td.is-empty {
   padding: 6px 12px;
   color: #003893;
   font-size: 14px;
+  line-height: 1.65;
   word-break: keep-all;
   text-align: center;
 }
@@ -1050,6 +1071,55 @@ footer {
   font-size: 12px;
   letter-spacing: 4px;
   text-align: center;
+}
+
+.is-mobile {
+  opacity: 0;
+  display: none;
+  z-index: 500;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 40px;
+  width: 90%;
+  height: 90%;
+  background: rgba(255, 255, 255, 0.8);
+  color: #003893;
+  font-size: 16px;
+  word-break: keep-all;
+  line-height: 1.65;
+  text-align: center;
+  border-radius: 16px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+.is-mobile strong {
+  font-size: 18px;
+}
+
+@media (max-width: 480px) {
+  .is-mobile {
+    opacity: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 @-webkit-keyframes effectPoing {
@@ -1126,5 +1196,23 @@ footer {
   height: 24px;
   background-size: 24px;
   background-image: url("../img/i-history.svg");
+}
+
+[data-icon][data-icon='alert'] {
+  display: block;
+  margin: 0 auto 12px;
+  width: 48px;
+  height: 48px;
+  background-size: 48px;
+  background-image: url("../img/i-alert.svg");
+}
+
+[data-icon][data-icon='hand'] {
+  display: block;
+  margin: 0 auto 12px;
+  width: 48px;
+  height: 48px;
+  background-size: 48px;
+  background-image: url("../img/i-hand.svg");
 }
 /*# sourceMappingURL=bridge.css.map */
