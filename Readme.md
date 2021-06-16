@@ -23,6 +23,7 @@
 - https://r712.github.io/medium (기본)
 - https://r712.github.io/medium/index-connected.html (지갑 연결 후)
 - https://r712.github.io/medium/explorer.html (내역)
+- https://r712.github.io/medium/modal.html (사용되는 모달 등을 모아둔 미리보기)
 
 -----
 
@@ -36,6 +37,8 @@
 - 전환하기
 - 전환중
 - 수수료 안내
+- 기본 오류 모달
+- 모바일 접근시 안내
 
 -----
 
