@@ -182,32 +182,30 @@ body.bg3 {
 
 .navbar .btn.btn-primary {
   position: relative;
-  border-color: #FFF;
-  background: #FFF url("../img/i-connect.svg") no-repeat 16px center;
+  border-color: #003893;
+  background: #003893 url("../img/i-connect.svg") no-repeat 16px center;
   padding-right: 20px;
-  width: 180px;
-  height: 54px;
-  color: #084a88;
-  font-weight: 500;
-  font-size: 16px;
+  width: 160px;
+  height: 50px;
+  color: #FFF;
+  font-weight: 400;
+  font-size: 15px;
   text-align: right;
   border-radius: 4px;
-  -webkit-box-shadow: 0 1px 16px #0a65b9;
-          box-shadow: 0 1px 16px #0a65b9;
 }
 
 .navbar .btn.btn-primary:hover, .navbar .btn.btn-primary:focus {
-  background-color: #deeefd;
+  background-color: #0048bc;
 }
 
 .navbar .dropdown-toggle {
-  border-color: #FFF;
-  background: #FFF url("../img/i-lock.svg") no-repeat 16px center;
+  border-color: #F6FBFF;
+  background: #F6FBFF url("../img/i-lock.svg") no-repeat 16px center;
   padding: 0 12px 0 42px;
-  height: 54px;
+  height: 50px;
   color: #084a88;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
   text-align: right;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 16px #001b47;
@@ -240,12 +238,26 @@ body.bg3 {
 }
 
 .introduce span {
-  display: block;
+  position: relative;
+  display: inline-block;
 }
 
 .introduce span:last-child {
   font-weight: 700;
   font-size: 32px;
+}
+
+.introduce span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  height: 16px;
+  background: #003893;
+  mix-blend-mode: multiply;
+  opacity: .4;
+  border-radius: 3px;
 }
 
 .aside {
@@ -1060,6 +1072,17 @@ td.is-empty {
 
 .pagination .active {
   font-weight: 600;
+}
+
+.is-disable {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.is-disable a:hover {
+  background: none !important;
+  color: inherit !important;
+  cursor: not-allowed;
 }
 
 footer {

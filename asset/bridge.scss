@@ -179,30 +179,29 @@ body {
     }
     .btn.btn-primary {
         position: relative;
-        border-color: $white;
-        background: $white url('../img/i-connect.svg') no-repeat 16px center;
+        border-color: $maincolor;
+        background: $maincolor url('../img/i-connect.svg') no-repeat 16px center;
         padding-right: 20px;
-        width: 180px;
-        height: 54px;
-        color: darken($subcolor1, 20%);
-        font-weight: 500;
-        font-size: 16px;
+        width: 160px;
+        height: 50px;
+        color: $white;
+        font-weight: 400;
+        font-size: 15px;
         text-align: right;
         border-radius: 4px;
-        box-shadow: 0 1px 16px darken($subcolor1, 10%);
         &:hover,
         &:focus {
-            background-color: lighten($subcolor1, 45%);
+            background-color: lighten($maincolor, 8%);
         }
     }
     .dropdown-toggle {
-        border-color: $white;
-        background: $white url('../img/i-lock.svg') no-repeat 16px center;
+        border-color: $bg;
+        background: $bg url('../img/i-lock.svg') no-repeat 16px center;
         padding: 0 12px 0 42px;
-        height: 54px;
+        height: 50px;
         color: darken($subcolor1, 20%);
         font-weight: 500;
-        font-size: 16px;
+        font-size: 15px;
         text-align: right;
         border-radius: 4px;
         box-shadow: 0 1px 16px darken($maincolor, 15%);
@@ -234,10 +233,23 @@ body {
     font-size: 22px;
     line-height: 1.54;
     span {
-        display: block;
+        position: relative;
+        display: inline-block;
         &:last-child {
             font-weight: 700;
             font-size: 32px;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 4px;
+            width: 100%;
+            height: 16px;
+            background: $maincolor;
+            mix-blend-mode: multiply;
+            opacity: .4;
+            border-radius: 3px;
         }
     }
 }
@@ -898,6 +910,19 @@ td.is-empty {
     }
     .active {
         font-weight: 600;
+    }
+}
+
+//
+//  기타 유틸리티 클래스
+//
+.is-disable {
+    opacity: .4;
+    cursor: not-allowed;
+    a:hover {
+        background: none !important;
+        color: inherit !important;
+        cursor: not-allowed;
     }
 }
 
