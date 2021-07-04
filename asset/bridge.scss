@@ -185,12 +185,14 @@ body {
         width: 160px;
         height: 50px;
         color: $white;
-        font-weight: 400;
+        font-weight: 600;
         font-size: 15px;
         text-align: right;
         border-radius: 4px;
+        opacity: .5;
         &:hover,
         &:focus {
+            opacity: 1;
             background-color: lighten($maincolor, 8%);
         }
     }
@@ -532,6 +534,19 @@ body {
     display: block;
     width: 40px;
     height: 40px;
+}
+.i-blockchain.soon {
+    background: $bg;
+    border-radius: 50%;
+    color: rgba($maincolor, .4);
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 40px;
+    text-align: center;
+    transform: rotate(-15deg);
+    & + strong {
+        opacity: .4;
+    }
 }
 
 //
