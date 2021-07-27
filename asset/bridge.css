@@ -1389,7 +1389,7 @@ footer {
   content: '';
   position: absolute;
   left: 50%;
-  top: 0;
+  top: -1px;
   margin-left: -6px;
   border: 6px solid transparent;
   border-top-color: #C11A00;
