@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-    
+
         <!--
             2단 바디
         -->
@@ -70,22 +70,29 @@
             -->
             <div class="aside column col-3 wow fadeInLeft" data-wow-delay="0.5s">
                 <div class="tutorial">
-                    <div>
+                    <div class="current-step">
                         <em>1</em>
-                        <span>전환 할 코인을 선택하세요</span>
+                        <span>전환할 코인을 선택하세요.</span>
                     </div>
                     <div>
                         <em>2</em>
-                        <span>보내고 받을 체인을 선택하고 지갑을 연결하세요</span>
+                        <span>보내고 받을 체인을 선택하고 지갑을 연결하세요. 보내고 받을 지갑을 모두 연결 해야 합니다.</span>
                     </div>
                     <div>
                         <em>3</em>
-                        <span>교환할 수량과 받을 지갑주소를 입력하세요</span>
+                        <span>교환할 수량을 입력하고 전환하기 버튼을 클릭 해주세요. 이후 안내에 따라 승인작업들을 진행 해주세요.</span>
+                    </div>
+                    <div>
+                        <em>4</em>
+                        <ul>
+                            <li>보내려는 지갑에서 트랜잭션 승인 처리를 완료 해주세요.</li>
+                            <li>코인 전환 작업 중입니다. 기다려주세요.</li>
+                            <li>수령하는 지갑에서 트랜잭션 승인 처리를 완료 해주세요.</li>
+                        </ul>
                     </div>
                 </div>
                 <!--
                     배경 미리보기 (기획팀 미리보기용)
-                -->
                 <div class="theme">
                     <h4>배경 선택</h4>
                     <div class="form-group">
@@ -107,6 +114,7 @@
                         </label>
                     </div>
                 </div>
+                -->
             </div>
 
             <!--
@@ -178,6 +186,34 @@
                     </div>
                     <div class="columns col-gapless">
                         <div class="form-label column col-2">
+                            <em>Destination</em>
+                            <span>수령지갑주소</span>
+                        </div>
+                        <div class="column col-10">
+                            <div class="input-group">
+                                <input class="form-input input-lg" type="text" placeholder="수령할 지갑 연결이 필요합니다. To체인을 선택해주세요.">
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                        수령지갑태그
+                    <div class="columns col-gapless">
+                        <div class="form-label column col-2">
+                            <em>Destination</em>
+                            <span>수령지갑태그</span>
+                        </div>
+                        <div class="column col-10">
+                            <div class="input-group">
+                                <input class="form-input input-lg" type="text" placeholder="지갑, 거래소에서 필요로 하는 경우 꼭 입력해주세요.">
+                                <button class="btn btn-primary input-group-btn btn-lg">
+                                    <i class="icon icon-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                    <div class="columns col-gapless">
+                        <div class="form-label column col-2">
                             <em>Amount</em>
                             <span>전환수량</span>
                         </div>
@@ -230,38 +266,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="columns col-gapless">
-                        <div class="form-label column col-2">
-                            <em>Destination</em>
-                            <span>수령지갑주소</span>
-                        </div>
-                        <div class="column col-10">
-                            <div class="input-group">
-                                <input class="form-input input-lg" type="text" placeholder="수령받을 지갑의 주소를 입력하세요.">
-                                <button class="btn btn-primary input-group-btn btn-lg">
-                                    <i class="icon icon-copy"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="columns col-gapless">
-                        <div class="form-label column col-2">
-                            <em>Destination</em>
-                            <span>수령지갑태그</span>
-                        </div>
-                        <div class="column col-10">
-                            <div class="input-group">
-                                <input class="form-input input-lg" type="text" placeholder="지갑, 거래소에서 필요로 하는 경우 꼭 입력해주세요.">
-                                <button class="btn btn-primary input-group-btn btn-lg">
-                                    <i class="icon icon-copy"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                     <ul class="caution">
-                        <li>주소 오입력 시 코인 전환이 정상적으로 이뤄지지 않아 자산을 잃을 수 있습니다.</li>
-                        <li>메타마스크 지갑 사용 시 컨트랙트 승인(최초 1회) 후에 코인 전환을 진행할 수 있습니다.</li>
+                        <li>미디움 브릿지는 지갑 대 지갑으로 전송을 지원합니다. 브릿지에 연결된 지갑에서 최종 승인 작업을 거쳐 거래가 완료됩니다.</li>
                         <li>Tax, Bridge fee 를 잘 확인하시고 진행 해주세요.</li>
+                        <li>전환 시 수령 지갑으로 가서 잔액 확인 및 승인을 진행 해주세요.</li>
                     </ul>
                     <button id="btn-exchange" class="btn-exchange btn btn-lg btn-primary btn-block">전환하기</button>
                 </form>
@@ -292,15 +300,15 @@
                         <img src="dummy/mdm.webp" class="i-blockchain" alt="MDM" />
                         <strong>MDM</strong>
                     </div>
-                    <div class="card column col-3">
-                        <img src="dummy/mrt.jpeg" class="i-blockchain" alt="Klay" />
-                        <strong>MRT</strong>
-                    </div>
-                    <div class="card column col-3">
+                    <div class="card column col-3 is-disable">
                         <i class="i-blockchain soon">soon</i>
                         <strong>준비중</strong>
                     </div>
-                    <div class="card column col-3">
+                    <div class="card column col-3 is-disable">
+                        <i class="i-blockchain soon">soon</i>
+                        <strong>준비중</strong>
+                    </div>
+                    <div class="card column col-3 is-disable">
                         <i class="i-blockchain soon">soon</i>
                         <strong>준비중</strong>
                     </div>
@@ -432,7 +440,11 @@ MDL_eth(besu) -> MDL tax 0.2MDM+ Gas Fee</pre>
                     <span>수령할 지갑 주소</span>
                     <div class="wallet-name"><i data-icon="wallet"></i>0deXDdedadf44sadsdFGedadf44sadsdFG7</div>
                 </div>
-                <div data-caution="danger">보내시는 주소가 맞는지 다시 한 번 확인해주세요. 주소 오 입력 시 코인 전환이 정상적으로 이루어지지 않아 자산을 잃을 수 있습니다.</div>
+                <ul class="caution">
+                    <li>전환이 시작되면 수령 지갑으로 가서 잔액 확인 및 승인을 진행 해주세요.</li>
+                    <li>같은 지갑인 경우 네트워크 변경 후 잔액 확인 및 승인 작업이 필요합니다.</li>
+                    <li>확인 버튼을 누르시면 지갑 간 이체를 위한 승인 작업이 진행 됩니다.</li>
+                </ul>
             </div>
             <div class="modal-footer">
                 <button id="btn-sending" class="btn btn-block btn-primary btn-lg">확인</button>
@@ -441,30 +453,25 @@ MDL_eth(besu) -> MDL tax 0.2MDM+ Gas Fee</pre>
     </div>
 
     <!--
-        전송 모달
+        데스크탑 알림 제공 동의 모달
     -->
-    <div class="modal" id="modal-sending">
+    <div class="modal" id="modal-desktop-alert">
         <a href="#close" class="modal-overlay" aria-label="Close"></a>
         <div class="modal-container">
             <div class="modal-header">
                 <button class="btn btn-clear float-right" aria-label="Close"></button>
-                <div class="modal-title">전송 완료</div>
+                <div class="modal-title">데스크탑 알림 제공 동의</div>
+                <p>진행상황에 대한 알림을 제공하기 위해 설정 변경이 필요합니다.<br/>알림 사용을 위해 <strong>확인</strong> 버튼을 클릭 해주세요.</p>
             </div>
             <div class="modal-body">
-                <div class="input-group">
-                    <span class="input-group-addon addon-lg">트랜잭션 해시</span>
-                    <input type="text" class="form-input input-lg" value="03xkjsd390905klJ" readonly />
-                    <button class="btn btn-primary input-group-btn btn-lg">검색</button>
+                <div data-caution="info">
+                    <i data-icon="info"></i>
+                    설정이 되지 않을 경우, 크롬 브라우저 상단의<br/>
+                    <code>[더보기] - [설정]</code> 메뉴로 들어가셔서 수동으로 설정 가능합니다.
                 </div>
-                <!-- 전송완료 - 처리중 -->
-                <div class="ux-hint"><div class="loading loading-lg"></div>트랜잭션 처리 중입니다. 잠시만 기다려주세요.</div>
-                <!-- 전송완료 - 처리완료 -->
-                <div class="ux-hint"><i data-icon="success"></i> 코인 전환이 완료 되었습니다.</div>
-                <!-- 전송실패 -->
-                <div class="ux-hint text-error"><i data-icon="error"></i> 알수없는 이유로 전송이 실패 되었습니다. 다시한번 시도해주세요.</div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-block btn-primary btn-lg">확인</button>
+                <button onclick="location.href='./index-four.html';" class="btn btn-block btn-primary btn-lg">확인</button>
             </div>
         </div>
     </div>
@@ -494,7 +501,7 @@ const modalTax = document.querySelector('#modal-tax');
 const btnExchange = document.querySelector('#btn-exchange');
 const modalExchange = document.querySelector('#modal-exchange');
 const btnSending = document.querySelector('#btn-sending');
-const modalSending = document.querySelector('#modal-sending');
+const modalDesktopAlert = document.querySelector('#modal-desktop-alert');
 const btnModalClose = document.querySelectorAll('.btn-clear');
 const modals = document.querySelectorAll('.modal');
 const modalOverlay = document.querySelectorAll('.modal-overlay');
@@ -543,7 +550,7 @@ btnExchange.addEventListener('click', () => {
 //
 btnSending.addEventListener('click', () => {
     modalExchange.classList.toggle('modal-show');
-    modalSending.classList.toggle('modal-show');
+    modalDesktopAlert.classList.toggle('modal-show');
 });
 
 //
@@ -553,19 +560,19 @@ btnWalletDetail.addEventListener('click', () => {
     modalWalletDetail.classList.toggle('modal-show');
 });
 
-//
-//  배경 샘플 테스트용
-//
-let bgThemeVal;
-const bgRadios = document.querySelectorAll('input[name=bg]');
-const bgBody = document.querySelector('body');
-bgRadios.forEach(radio => {
-    radio.addEventListener('click', () => {
-        bgThemeVal = radio.value;
-        bgBody.removeAttribute('class');
-        bgBody.classList.add(bgThemeVal);
-    });
-});
+// //
+// //  배경 샘플 테스트용
+// //
+// let bgThemeVal;
+// const bgRadios = document.querySelectorAll('input[name=bg]');
+// const bgBody = document.querySelector('body');
+// bgRadios.forEach(radio => {
+//     radio.addEventListener('click', () => {
+//         bgThemeVal = radio.value;
+//         bgBody.removeAttribute('class');
+//         bgBody.classList.add(bgThemeVal);
+//     });
+// });
 
 </script>
 <!-- animate.css * wow.js 페이지 로드시 효과 라이브러리 -->

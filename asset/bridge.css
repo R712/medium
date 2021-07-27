@@ -111,6 +111,7 @@ body.bg3 {
 }
 
 .navbar {
+  z-index: 100;
   position: fixed;
   left: 0;
   top: 0;
@@ -283,10 +284,9 @@ body.bg3 {
   position: relative;
   margin-right: 16px;
   padding: 24px;
-  background: rgba(0, 0, 0, 0.4);
-  color: rgba(255, 255, 255, 0.75);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  background: #001b47;
+  color: #c6dcff;
+  font-size: 13px;
   border-radius: 8px;
 }
 
@@ -324,20 +324,50 @@ body.bg3 {
 
 .aside .tutorial div span {
   display: block;
-  font-size: 15px;
   line-height: 1.54;
   word-break: keep-all;
 }
 
-.aside .tutorial div:first-child, .aside .tutorial div.current-step {
+.aside .tutorial div.current-step {
+  padding-left: 30px;
   color: #FFF;
   font-weight: 600;
+  font-size: 15px;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
-.aside .tutorial div:first-child em, .aside .tutorial div.current-step em {
-  background: #0D7FE9;
+.aside .tutorial div.current-step em {
+  background: #FFF;
+  color: #003893;
   -webkit-animation: effectPoing 1s infinite;
           animation: effectPoing 1s infinite;
+}
+
+.aside .tutorial div ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #c6dcff;
+  font-weight: 400;
+}
+
+.aside .tutorial div ul li {
+  font-size: 13px;
+  line-height: 1.54;
+  word-break: keep-all;
+}
+
+.aside .tutorial div ul li.current-step {
+  color: #FFF;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.aside .tutorial div ul li + li {
+  margin-top: 12px;
+  padding-top: 16px;
+  border-top: 1px dotted rgba(255, 255, 255, 0.1);
 }
 
 .aside .theme {
@@ -388,6 +418,7 @@ body.bg3 {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 40px;
+  height: 100%;
   background: #FFF;
   border-radius: 8px;
 }
@@ -442,6 +473,29 @@ body.bg3 {
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 16px rgba(13, 127, 233, 0.4);
           box-shadow: 0 1px 16px rgba(13, 127, 233, 0.4);
+}
+
+.exchange-process {
+  z-index: 1;
+  position: relative;
+}
+
+.exchange-process .inner {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 40px;
+  height: 100%;
+  background: #FFF;
+  border-radius: 8px;
+}
+
+.exchange-process [data-caution] {
+  margin-top: 60px;
+  font-size: 16px;
+}
+
+.exchange-process .exchange-coin {
+  margin: 80px 0;
 }
 
 .dropdown {
@@ -658,16 +712,15 @@ body.bg3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .wallet-wrap .wallet-item {
@@ -685,14 +738,28 @@ body.bg3 {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
-  border: 1px solid #EAEAEA;
   font-size: 16px;
-  border-radius: 8px;
 }
 
 .wallet-wrap .wallet-item img {
   margin-bottom: 8px;
-  width: 128px;
+  width: 98px;
+}
+
+.wallet-wrap .wallet-item strong {
+  color: #003893;
+  font-size: 14px;
+}
+
+.wallet-wrap .wallet-item p {
+  margin: 16px 0 12px;
+  font-size: 13px;
+  line-height: 19px;
+  text-align: center;
+}
+
+.wallet-wrap .wallet-item + .wallet-item {
+  border-left: 1px dashed #EAEAEA;
 }
 
 .wallet-wrap .btn-sm {
@@ -842,18 +909,23 @@ body.bg3 {
   font-size: 15px;
 }
 
+.exchange-coin div.current-step {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  border: 1px solid rgba(0, 56, 147, 0.1);
+}
+
 .exchange-coin::before {
-  content: '⇢';
+  content: '';
   position: absolute;
   left: 50%;
   top: 50%;
   margin-top: -40px;
   margin-left: -40px;
   width: 80px;
-  color: #0D7FE9;
-  font-size: 48px;
-  line-height: 80px;
-  text-align: center;
+  height: 80px;
+  background: url("../img/i-exchange.svg") no-repeat center;
+  background-size: 48px;
   -webkit-animation: effectTransfer 1s infinite;
           animation: effectTransfer 1s infinite;
 }
@@ -938,31 +1010,6 @@ body.bg3 {
   border-radius: 8px;
 }
 
-.bridge-explorer .headline {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0 20px;
-  height: 60px;
-  background: #F6FBFF;
-  font-size: 18px;
-  line-height: 60px;
-  border-radius: 4px;
-}
-
-.bridge-explorer .headline p {
-  margin: 0;
-  padding-left: 12px;
-  color: #003893;
-}
-
 .bridge-explorer .table {
   margin-top: 20px;
   text-align: center;
@@ -995,13 +1042,38 @@ body.bg3 {
   text-decoration: underline;
 }
 
+.headline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  height: 60px;
+  background: #F6FBFF;
+  font-size: 18px;
+  line-height: 60px;
+  border-radius: 4px;
+}
+
+.headline p {
+  margin: 0;
+  padding-left: 12px;
+  color: #003893;
+}
+
 [data-status] {
   color: #003893;
   font-weight: 600;
 }
 
 [data-status][data-status='fail'] {
-  color: #E85600;
+  color: #C11A00;
 }
 
 [data-status][data-status='ing'] {
@@ -1009,7 +1081,7 @@ body.bg3 {
 }
 
 tr.is-fail {
-  background: rgba(232, 86, 0, 0.05);
+  background: rgba(193, 26, 0, 0.05);
 }
 
 tr.is-ing {
@@ -1046,22 +1118,31 @@ td.is-empty {
 
 [data-caution] {
   position: relative;
-  padding: 12px 12px 12px 24px;
-  font-size: 12px;
-  line-height: 18px;
+  padding: 16px 16px 16px 40px;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 3px;
 }
 
-[data-caution]::before {
-  content: '!';
+[data-caution][data-caution='danger'] {
+  background: rgba(193, 26, 0, 0.08);
+  color: #C11A00;
+}
+
+[data-caution][data-caution='info'] {
+  background: #F6FBFF;
+  color: #003893;
+}
+
+[data-caution][data-caution='success'] {
+  background: rgba(1, 171, 51, 0.08);
+  color: #01AB33;
+}
+
+[data-caution] i {
   position: absolute;
-  left: 12px;
-  top: 12px;
-  width: 18px;
-  height: 18px;
-  color: #3E1C91;
-  font-weight: 700;
-  font-size: 11px;
-  line-height: 18px;
+  left: 16px;
+  top: 16px;
 }
 
 .block-msg {
@@ -1097,10 +1178,26 @@ td.is-empty {
   cursor: not-allowed;
 }
 
+.is-disable:hover,
 .is-disable a:hover {
   background: none !important;
   color: inherit !important;
   cursor: not-allowed;
+}
+
+code {
+  vertical-align: middle;
+  background: #F6FBFF;
+  color: #003893;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+hr {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-top: 1px dashed #EAEAEA;
 }
 
 footer {
@@ -1218,10 +1315,16 @@ footer {
 }
 
 [data-icon][data-icon='success'] {
+  width: 20px;
+  height: 20px;
+  background-size: 20px;
   background-image: url("../img/i-success.svg");
 }
 
 [data-icon][data-icon='info'] {
+  width: 20px;
+  height: 20px;
+  background-size: 20px;
   background-image: url("../img/i-info.svg");
 }
 
@@ -1234,6 +1337,13 @@ footer {
   height: 24px;
   background-size: 24px;
   background-image: url("../img/i-history.svg");
+}
+
+[data-icon][data-icon='process'] {
+  width: 24px;
+  height: 24px;
+  background-size: 24px;
+  background-image: url("../img/i-process.svg");
 }
 
 [data-icon][data-icon='alert'] {
@@ -1252,5 +1362,45 @@ footer {
   height: 48px;
   background-size: 48px;
   background-image: url("../img/i-hand.svg");
+}
+
+[data-status] {
+  position: relative;
+}
+
+[data-status]::after {
+  content: '승인필요';
+  position: absolute;
+  left: 50%;
+  margin-left: -32px;
+  top: -30px;
+  width: 64px;
+  height: 30px;
+  background: #C11A00;
+  color: #FFF;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+[data-status]::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top-color: #C11A00;
+}
+
+[data-status][data-status='success']::after {
+  content: '승인완료';
+  background: #01AB33;
+}
+
+[data-status][data-status='success']::before {
+  border-top-color: #01AB33;
 }
 /*# sourceMappingURL=bridge.css.map */

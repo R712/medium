@@ -10,7 +10,8 @@ $txtcolor: #222;
 $txtsubcolor: #888;
 $white: #FFF;
 $black: #000;
-$error: #E85600;
+$error: #C11A00;
+$success: #01AB33;
 $border: #EAEAEA;
 $bg: #F6FBFF;
 
@@ -118,6 +119,7 @@ body {
 //  GNB
 //
 .navbar {
+    z-index: 100;
     position: fixed;
     left: 0;
     top: 0;
@@ -269,9 +271,9 @@ body {
             position: relative;
             margin-right: 16px;
             padding: 24px;
-            background: rgba($black, .4);
-            color: rgba($white, .75);
-            backdrop-filter: blur(10px);
+            background: darken($maincolor, 15%);
+            color: lighten($maincolor, 60%);
+            font-size: 13px;
             border-radius: 8px;
             & + div {
                 margin-top: 40px;
@@ -304,17 +306,41 @@ body {
             }
             span {
                 display: block;
-                font-size: 15px;
                 line-height: 1.54;
                 word-break: keep-all;
             }
-            &:first-child,
             &.current-step {
+                padding-left: 30px;
                 color: $white;
                 font-weight: 600;
+                font-size: 15px;
+                transform: scale(1.05);
                 em {
-                    background: $subcolor1;
+                    background: $white;
+                    color: $maincolor;
                     animation: effectPoing 1s infinite;
+                }
+            }
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                color: lighten($maincolor, 60%);
+                font-weight: 400;
+                li {
+                    font-size: 13px;
+                    line-height: 1.54;
+                    word-break: keep-all;
+                    &.current-step {
+                        color: $white;
+                        font-weight: 600;
+                        font-size: 15px;
+                    }
+                    & + li {
+                        margin-top: 12px;
+                        padding-top: 16px;
+                        border-top: 1px dotted rgba($white, .1);
+                    }
                 }
             }
         }
@@ -358,6 +384,7 @@ body {
     form {
         box-sizing: border-box;
         padding: 40px;
+        height: 100%;
         background: $white;
         border-radius: 8px;
     }
@@ -396,6 +423,28 @@ body {
         font-size: 15px;
         border-radius: 4px;
         box-shadow: 0 1px 16px rgba($subcolor1, .4);
+    }
+}
+
+//
+//  4단계 전환 프로세스
+//
+.exchange-process {
+    z-index: 1;
+    position: relative;
+    .inner {
+        box-sizing: border-box;
+        padding: 40px;
+        height: 100%;
+        background: $white;
+        border-radius: 8px;
+    }
+    [data-caution] {
+        margin-top: 60px;
+        font-size: 16px;
+    }
+    .exchange-coin {
+        margin: 80px 0;
     }
 }
 
@@ -588,21 +637,32 @@ body {
 //
 .wallet-wrap {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     .wallet-item {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 20px;
-        border: 1px solid $border;
         font-size: 16px;
-        border-radius: 8px;
         img {
             margin-bottom: 8px;
-            width: 128px;
+            width: 98px;
+        }
+        strong {
+            color: $maincolor;
+            font-size: 14px;
+        }
+        p {
+            margin: 16px 0 12px;
+            font-size: 13px;
+            line-height: 19px;
+            text-align: center;
+        }
+        & + .wallet-item {
+            border-left: 1px dashed $border;
         }
     }
     .btn-sm {
@@ -709,19 +769,22 @@ body {
             font-weight: 600;
             font-size: 15px;
         }
+        &.current-step {
+            transform: scale(1.2);
+            border: 1px solid rgba($maincolor, .1);
+        }
     }
     &::before {
-        content: '⇢';
+        content: '';
         position: absolute;
         left: 50%;
         top: 50%;
         margin-top: -40px;
         margin-left: -40px;
         width: 80px;
-        color: $subcolor1;
-        font-size: 48px;
-        line-height: 80px;
-        text-align: center;
+        height: 80px;
+        background: url('../img/i-exchange.svg') no-repeat center;
+        background-size: 48px;
         animation: effectTransfer 1s infinite;
     }
 }
@@ -780,22 +843,6 @@ body {
     width: 100%;
     background: $white;
     border-radius: 8px;
-    .headline {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 0 20px;
-        height: 60px;
-        background: $bg;
-        font-size: 18px;
-        line-height: 60px;
-        border-radius: 4px;
-        p {
-            margin: 0;
-            padding-left: 12px;
-            color: $maincolor;
-        }
-    }
     .table {
         margin-top: 20px;
         text-align: center;
@@ -823,6 +870,26 @@ body {
             color: $maincolor;
             text-decoration: underline;
         }
+    }
+}
+
+//
+//  헤드라인
+//
+.headline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+    background: $bg;
+    font-size: 18px;
+    line-height: 60px;
+    border-radius: 4px;
+    p {
+        margin: 0;
+        padding-left: 12px;
+        color: $maincolor;
     }
 }
 
@@ -882,20 +949,26 @@ td.is-empty {
 //
 [data-caution] {
     position: relative;
-    padding: 12px 12px 12px 24px;
-    font-size: 12px;
-    line-height: 18px;
-    &::before {
-        content: '!';
+    padding: 16px 16px 16px 40px;
+    font-size: 14px;
+    line-height: 1.4;
+    border-radius: 3px;
+    &[data-caution='danger'] {
+        background: rgba($error, .08);
+        color: $error;
+    }
+    &[data-caution='info'] {
+        background: $bg;
+        color: $maincolor;
+    }
+    &[data-caution='success'] {
+        background: rgba($success, .08);
+        color: $success;
+    }
+    i {
         position: absolute;
-        left: 12px;
-        top: 12px;
-        width: 18px;
-        height: 18px;
-        color: $subcolor0;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 18px;
+        left: 16px;
+        top: 16px;
     }
 }
 
@@ -934,11 +1007,29 @@ td.is-empty {
 .is-disable {
     opacity: .4;
     cursor: not-allowed;
+    &:hover,
     a:hover {
         background: none !important;
         color: inherit !important;
         cursor: not-allowed;
     }
+}
+
+//
+//  code - 기능 안내용
+//
+code {
+    vertical-align: middle;
+    background: $bg;
+    color: $maincolor;
+    font-weight: bold;
+    font-size: 12px;
+}
+hr {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-top: 1px dashed $border;
 }
 
 //
@@ -1028,9 +1119,15 @@ footer {
         background-image: url('../img/i-copy.svg');
     }
     &[data-icon='success'] {
+        width: 20px;
+        height: 20px;
+        background-size: 20px;
         background-image: url('../img/i-success.svg');
     }
     &[data-icon='info'] {
+        width: 20px;
+        height: 20px;
+        background-size: 20px;
         background-image: url('../img/i-info.svg');
     }
     &[data-icon='error'] {
@@ -1041,6 +1138,12 @@ footer {
         height: 24px;
         background-size: 24px;
         background-image: url('../img/i-history.svg');
+    }
+    &[data-icon='process'] {
+        width: 24px;
+        height: 24px;
+        background-size: 24px;
+        background-image: url('../img/i-process.svg');
     }
     &[data-icon='alert'] {
         display: block;
@@ -1057,5 +1160,46 @@ footer {
         height: 48px;
         background-size: 48px;
         background-image: url('../img/i-hand.svg');
+    }
+}
+
+//
+//  상태 표시
+//
+[data-status] {
+    position: relative;
+    &::after {
+        content: '승인필요';
+        position: absolute;
+        left: 50%;
+        margin-left: -32px;
+        top: -30px;
+        width: 64px;
+        height: 30px;
+        background: $error;
+        color: $white;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 3px;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: -6px;
+        border: 6px solid transparent;
+        border-top-color: $error;
+    }
+    &[data-status='success'] {
+        &::after {
+            content: '승인완료';
+            background: $success;
+        }
+        &::before {
+            border-top-color: $success;
+        }
     }
 }

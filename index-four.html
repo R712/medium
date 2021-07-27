@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>Medium Bridge</title>
+    <meta name="description" content="Medium Bridge">
+    <meta name="author" content="Medium">
+    <link rel="stylesheet" href="asset/style.css">
+</head>
+
+<body class="bg0">
+
+<div class="bridge-wrap">
+
+    <!--
+        GNB : 지갑 연결 후
+    -->
+    <header class="navbar wow fadeInDown">
+        <section class="navbar-section">
+            <a class="navbar-brand" href="index.html"><span>Medium Bridge</span></a>
+            <a class="btn btn-link is-current" href="index-connected.html">Bridge</a>
+            <a class="btn btn-link" href="explorer.html">Explorer</a>
+            <a class="btn btn-link" href="#" onclick="javascript:void(0);">Docs</a>
+        </section>
+        <section class="navbar-section">
+            <div class="dropdown dropdown-right">
+                <a href="#" class="btn dropdown-toggle" tabindex="0">
+                    <strong>0xc74e94...15c9da</strong>
+                    <i class="icon icon-caret"></i>
+                </a>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a id="btn-wallet-detail" href="javascript:void(0);">내 지갑 정보 보기</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="explorer.html">트랜잭션 히스토리 보기</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="menu-item">
+                        <a href="index.html"><i class="icon icon-shutdown"></i> 로그아웃</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </header>
+
+    <!--
+        컨테이너
+    -->
+    <div class="container">
+
+        <!--
+            상단 메시지
+        -->
+        <div class="introduce wow fadeInUp fast" data-wow-delay="0.5s">
+            <div class="colums">
+                <div class="column col-ml-auto col-9">
+                    <span>암호화폐 사이에 새로운 길을 열다.</span>
+                </div>
+            </div>
+        </div>
+    
+        <!--
+            2단 바디
+        -->
+        <div class="columns">
+
+            <!--
+                튜토리얼
+                현재 위치한 프로세스 스텝에 class="current-step" 추가해야합니다.
+            -->
+            <div class="aside column col-3 wow fadeInLeft" data-wow-delay="0.5s">
+                <div class="tutorial">
+                    <div>
+                        <em>1</em>
+                        <span>전환할 코인을 선택하세요.</span>
+                    </div>
+                    <div>
+                        <em>2</em>
+                        <span>보내고 받을 체인을 선택하고 지갑을 연결하세요. 보내고 받을 지갑을 모두 연결 해야 합니다.</span>
+                    </div>
+                    <div>
+                        <em>3</em>
+                        <span>교환할 수량을 입력하고 전환하기 버튼을 클릭 해주세요. 이후 안내에 따라 승인작업들을 진행 해주세요.</span>
+                    </div>
+                    <div class="current-step">
+                        <em>4</em>
+                        <ul>
+                            <li class="current-step">보내려는 지갑에서 트랜잭션 승인 처리를 완료 해주세요.</li>
+                            <li>코인 전환 작업 중입니다. 기다려주세요.</li>
+                            <li>수령하는 지갑에서 트랜잭션 승인 처리를 완료 해주세요.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+                본문 컨텐츠
+            -->
+            <main class="exchange-process column col-9 wow fadeInRight" data-wow-delay="0.5s">
+                <div class="inner">
+                    <div class="headline">
+                        <i data-icon="process"></i>
+                        <p>마지막 작업이 진행중입니다.</p>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon addon-lg">트랜잭션 해시</span>
+                        <input type="text" class="form-input input-lg" value="03xkjsd390905klJ" readonly />
+                        <button class="btn btn-primary input-group-btn btn-lg">검색</button>
+                    </div>
+
+                    <!--
+                        4-1 프로세스 승인필요
+                    -->
+                    <div data-caution="info">
+                        <i data-icon="info"></i>
+                        보내려는 지갑에서 <strong>트랜잭션 승인처리</strong>를 완료 해주세요.
+                    </div>
+                    <div class="exchange-coin">
+                        <div class="current-step" data-status="wait">
+                            <span>From</span>
+                            <img src="dummy/eth.webp" class="i-blockchain" alt="이더리움"/>
+                            <strong>이더리움</strong>
+                        </div>
+                        <div>
+                            <span>To</span>
+                            <img src="dummy/mdm.webp" class="i-blockchain" alt="MDM"/>
+                            <strong>MDM</strong>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <!--
+                        4-1 프로세스 승인완료
+                    -->
+                    <div data-caution="success">
+                        <i data-icon="success"></i>
+                        보내려는 지갑에서 <strong>트랜잭션 승인처리</strong>를 완료 해주세요.
+                    </div>
+                    <div class="exchange-coin">
+                        <div class="current-step" data-status="success">
+                            <span>From</span>
+                            <img src="dummy/eth.webp" class="i-blockchain" alt="이더리움"/>
+                            <strong>이더리움</strong>
+                        </div>
+                        <div>
+                            <span>To</span>
+                            <img src="dummy/mdm.webp" class="i-blockchain" alt="MDM"/>
+                            <strong>MDM</strong>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <!--
+                        4-2 프로세스 전환중
+                    -->
+                    <div data-caution="info">
+                        <i data-icon="info"></i>
+                        <strong>전환 작업 중입니다.</strong> 잠시만 기다려주세요.
+                    </div>
+                    <div class="exchange-coin">
+                        <div>
+                            <span>From</span>
+                            <img src="dummy/eth.webp" class="i-blockchain" alt="이더리움"/>
+                            <strong>이더리움</strong>
+                        </div>
+                        <div>
+                            <span>To</span>
+                            <img src="dummy/mdm.webp" class="i-blockchain" alt="MDM"/>
+                            <strong>MDM</strong>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <!--
+                        4-2 프로세스 전환완료
+                    -->
+                    <div data-caution="success">
+                        <i data-icon="success"></i>
+                        <strong>전환 작업 중입니다.</strong> 잠시만 기다려주세요.
+                    </div>
+                    <div class="exchange-coin">
+                        <div>
+                            <span>From</span>
+                            <img src="dummy/eth.webp" class="i-blockchain" alt="이더리움"/>
+                            <strong>이더리움</strong>
+                        </div>
+                        <div>
+                            <span>To</span>
+                            <img src="dummy/mdm.webp" class="i-blockchain" alt="MDM"/>
+                            <strong>MDM</strong>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <!--
+                        4-3 프로세스 승인필요
+                    -->
+                    <div data-caution="info">
+                        <i data-icon="info"></i>
+                        수령하는 지갑에서 <strong>트랜잭션 승인 처리</strong>를 완료 해주세요.
+                    </div>
+                    <div class="exchange-coin">
+                        <div data-status="success">
+                            <span>From</span>
+                            <img src="dummy/eth.webp" class="i-blockchain" alt="이더리움"/>
+                            <strong>이더리움</strong>
+                        </div>
+                        <div class="current-step" data-status="wait">
+                            <span>To</span>
+                            <img src="dummy/mdm.webp" class="i-blockchain" alt="MDM"/>
+                            <strong>MDM</strong>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <!--
+                        4-3 프로세스 승인완료
+                    -->
+                    <div data-caution="success">
+                        <i data-icon="success"></i>
+                        <strong>전환 작업이 완료 되었습니다.</strong> 잠시 후 홈으로 이동합니다.
+                    </div>
+                    <div class="exchange-coin">
+                        <div data-status="success">
+                            <span>From</span>
+                            <img src="dummy/eth.webp" class="i-blockchain" alt="이더리움"/>
+                            <strong>이더리움</strong>
+                        </div>
+                        <div class="current-step" data-status="success">
+                            <span>To</span>
+                            <img src="dummy/mdm.webp" class="i-blockchain" alt="MDM"/>
+                            <strong>MDM</strong>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+        </div>
+
+    </div>
+
+    <!--
+        푸터
+    -->
+    <footer class="wow fadeInUp">Copyright 2021 &copy; <strong>MEDIUM.</strong> All rights reserved.</footer>
+
+</div>
+
+<script type="text/javascript">
+//
+//  대부분의 스크립트는 미리보기 시연용이며, 디자이너에 의해 작성되어 있어서
+//  실제 프론트개발에 적합하지 않을 수 있으므로 참고만 부탁드려요!
+//
+
+//
+//  빠른 호출용 정의
+//
+const btnWalletDetail = document.querySelector('#btn-wallet-detail');
+const modalWalletDetail = document.querySelector('#modal-wallet-detail');
+const btnModalClose = document.querySelectorAll('.btn-clear');
+const modals = document.querySelectorAll('.modal');
+const modalOverlay = document.querySelectorAll('.modal-overlay');
+
+//
+//  모달 닫기 버튼 클릭시 모달 닫기
+//
+btnModalClose.forEach(button => {
+    button.addEventListener('click', () => {
+        document.querySelector('.modal-show').classList.remove('modal-show');
+    });
+});
+
+//
+//  모달 배경 오버레이 클릭시 모달 닫기
+//
+modalOverlay.forEach(a => {
+    a.addEventListener('click', () => {
+        document.querySelector('.modal-show').classList.remove('modal-show');
+    });
+});
+
+//
+//  내 지갑 정보 보기 모달 호출
+//
+btnWalletDetail.addEventListener('click', () => {
+    modalWalletDetail.classList.toggle('modal-show');
+});
+
+</script>
+<!-- animate.css * wow.js 페이지 로드시 효과 라이브러리 -->
+<script src="js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+</body>
+</html>
