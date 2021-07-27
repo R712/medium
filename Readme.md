@@ -22,6 +22,7 @@
 ## 미리보기 🔗
 - https://r712.github.io/medium (기본)
 - https://r712.github.io/medium/index-connected.html (지갑 연결 후)
+- https://r712.github.io/medium/index-four.html (코인 전환 모달을 4단계 페이지로 분리)
 - https://r712.github.io/medium/explorer.html (내역)
 - https://r712.github.io/medium/modal.html (사용되는 모달 등을 모아둔 미리보기)
 
@@ -31,14 +32,15 @@
 현재 보이는 모달은 아래 목록에 추가될 때마다 갱신해 두겠습니다.
 
 - 코인 선택하기
-- 지갑 연결하기
+- 지갑 연결하기 (Update)
 - 지갑 연결완료
 - 내 지갑 정보 보기
-- 전환하기
-- 전환중
+- 전환하기 (Update)
+- 전환중 (사용안함)
 - 수수료 안내
 - 기본 오류 모달
 - 모바일 접근시 안내
+- 데스크탑 알림 제공 동의 (new)
 
 -----
 
